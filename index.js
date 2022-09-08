@@ -9,8 +9,10 @@ app.use(express.static('assets'));
 app.use(morgan('dev'));
 app.set('view engine', 'ejs');
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((result) => app.listen(port))
+    .catch((err) => console.log(err));
+    
 controller(app);
 
 const port = 8000;
-app.listen(port);
