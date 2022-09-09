@@ -15,4 +15,4 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     
 controller(app);
 
-const port = 8000;
+const port = process.env.PORT || 8000;
