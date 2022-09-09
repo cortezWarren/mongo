@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head'); %>
+<body>
+    <ul>
+        <% for (let i = 0; i < data.length; i++) { %>
+            <li>
+               <a href="/singleid/<%= data[i].id %>"><%= data[i].title+', '; %></a>
+            </li>
+        <%}%>
+    </ul>
+</body>
+<script>
+</script>
+</html>
