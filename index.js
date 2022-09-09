@@ -10,7 +10,7 @@ app.use(morgan('dev'));
 app.set('view engine', 'ejs');
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => app.listen(port))
+    .then((result) => app.listen(port, console.log(`running at port ${port}`)))
     .catch((err) => console.log(err));
     
 controller(app);
