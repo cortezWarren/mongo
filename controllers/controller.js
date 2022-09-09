@@ -21,12 +21,18 @@ module.exports = (app) => {
     })
 
     app.get('/all-blogs',(req,res) => {
-        Blog.find().sort({createdAt: -1}).then(result => res.render('index',{title: 'All Blogs', data: result})).catch(err => console.log(err))
+        Blog.find().sort({createdAt: -1}).then(result => res.render('index',{title: 'All Blogs', blogs: result})).catch(err => console.log(err))
     })
 
     app.get('/singleid/:id',(req,res) => {
-        Blog.findById(req.params.id).then(result => res.send(result)).catch(err => console.log(err));
+        const id = req.params.id;
+        Blog.findById(id).then(result => res.render('details',{title: 'Blog Details', blog: result})).catch(err => console.log(err));
     })
+
+    app.delete('/blog/:id',(req, res) => {
+        const id = req.params.id;
+        Blog.findByIdAndDelete(id).then(result => res.json({redirect: '/all-blogs'})).catch(err => console.log(err));
+    });
 
     app.use((req,res) => {
         res.status(404).render('errpage',{title: '404 not found'});
