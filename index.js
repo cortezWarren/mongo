@@ -7,6 +7,7 @@ const dbURI = 'mongodb+srv://mongoTest:fRbuubGobFAZFEcz@cluster0.a9ozy51.mongodb
 
 app.use(express.static('assets'));
 app.use(morgan('dev'));
+app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
