@@ -10,17 +10,16 @@
     </div>
 </body>
 <script>
-    const trash = document.querySelector('.delete');
+  const trash = document.querySelector('a.delete');
 
-    trash.addEventListener('click', (e) => {
-        const endpoint = `/blogs/${trash.dataset.doc}`;
+  trash.addEventListener('click',(e) => {
+    const endpoint = `/blogs/${trash.dataset.doc}`;
 
-        fetch(endpoint, {
-            method: 'DELETE'
-        })
-        .then(response => response.json())
-        .then(data => window.location.href = data.redirect)
-        .catch(err => console.log(err));
-    })
+    fetch(endpoint,{
+        method: 'DELETE'
+    }).then(response => response.json())
+    .then(data => window.location.href = data.redirect)
+    .catch(err => console.log(err));
+  });
 </script>
 </html>
