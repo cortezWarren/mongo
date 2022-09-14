@@ -16,8 +16,9 @@ const create_blogs = (req,res) => {
 }
 
 const search_blog = (req,res) => {
-    const searchBlog = req.body.search;
-
+    const id = req.query.search;
+    Blog.findById(id).then(result => res.render('blogs/details',{title: 'Blog Details', blog: result})).catch(err => res.status(404).render('blogs/errpage', {title: 'Page Not Found'}));
+    console.log(id);
 }
 
 const delete_blog = (req, res) => {
