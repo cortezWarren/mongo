@@ -15,11 +15,21 @@
   trash.addEventListener('click',(e) => {
     const endpoint = `/blogs/${trash.dataset.doc}`;
 
-    fetch(endpoint,{
-        method: 'DELETE'
-    }).then(response => response.json())
-    .then(data => window.location.href = data.redirect)
-    .catch(err => console.log(err));
+    // fetch(endpoint,{
+    //     method: 'DELETE'
+    // }).then(response => response.json())
+    // .then(data => window.location.href = data.redirect)
+    // .catch(err => console.log(err));
+
+    const deleteUser = async () => {
+      const response = await fetch(endpoint,{method: 'DELETE'});
+      const data = await response.json();
+      data = window.location.href = data.redirect;
+      return data;
+    }
+
+    deleteUser();
+
   });
 </script>
 </html>
